@@ -1,6 +1,7 @@
-import { Button, Container, Heading } from "@chakra-ui/react";
+import { Container, Heading } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button";
 
 export default function () {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function () {
     <Container p={6}>
       <Heading textAlign="center">Home</Heading>
 
-      <Button onClick={handleSignOut}>Sign Out</Button>
+      <Button text="Sign Out" onClick={handleSignOut} />
     </Container>
   );
 }

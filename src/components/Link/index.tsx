@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledLink = styled(Link)`
   color: #4d61fc;
+  font-weight: bold;
 
   &:hover {
     text-decoration: underline;

@@ -1,15 +1,14 @@
-import React from "react";
-import "./styles.scss";
+import { Input, InputProps } from "@chakra-ui/react";
 
-type Props = {
-  type: string;
-  name: string;
-  id: string;
-  placeholder: string;
-  value: string | number;
-  onChange: () => string;
-};
+type Props = InputProps & {};
 
 export default function ({ ...props }: Props) {
-  return <input className="input" {...props} />;
+  return (
+    <Input
+      borderColor="#696687"
+      focusBorderColor="#4d61fc"
+      variant="flushed"
+      {...props}
+    />
+  );
 }

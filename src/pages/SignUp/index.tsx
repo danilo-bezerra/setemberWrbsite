@@ -1,22 +1,23 @@
+import { useEffect, useState } from "react";
 import {
-  Box,
   Center,
   Container,
   Text,
-  Input,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
   IconButton,
-  Button,
   Heading,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { EmailIcon, LockIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { EmailIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { IoPerson } from "react-icons/io5";
-import Link from "../../components/Link";
+
 import { useNavigate } from "react-router-dom";
-//IoPerson
+
+import Link from "../../components/Link";
+import Button from "../../components/Button";
+import Label from "../../components/label";
+import Input from "../../components/Input";
+
 export default function () {
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({
@@ -73,46 +74,35 @@ export default function () {
         <Heading textAlign="center" size="lg" mb={6} color="black">
           Create Account
         </Heading>
+
         <form>
-          <Text fontSize="md">Name</Text>
+          <Label label="Name" />
           <InputGroup mb={4}>
             <Input
               id="name"
               type="text"
-              variant="flushed"
-              borderColor="#696687"
-              borderBottomWidth={1.5}
-              focusBorderColor="#4d61fc"
               placeholder="ex: John Doe"
               onChange={({ target }) => handleChange(target.id, target.value)}
             />
             <InputRightElement pointerEvents="none" children={<IoPerson />} />
           </InputGroup>
 
-          <Text fontSize="md">Email</Text>
+          <Label label="Email" />
           <InputGroup mb={4}>
             <Input
               id="email"
               type="email"
-              variant="flushed"
-              borderColor="#696687"
-              borderBottomWidth={1.5}
-              focusBorderColor="#4d61fc"
               placeholder="ex: email@example.com"
               onChange={({ target }) => handleChange(target.id, target.value)}
             />
             <InputRightElement pointerEvents="none" children={<EmailIcon />} />
           </InputGroup>
 
-          <Text fontSize="md">Password</Text>
+          <Label label="Password" />
           <InputGroup size="md" mb={4}>
             <Input
               id="password"
-              variant="flushed"
               type={showPassword ? "text" : "password"}
-              borderColor="#696687"
-              borderBottomWidth={1.5}
-              focusBorderColor="#4d61fc"
               placeholder="**********"
               onChange={({ target }) => handleChange(target.id, target.value)}
             />
@@ -133,18 +123,15 @@ export default function () {
             </InputRightElement>
           </InputGroup>
 
-          <Text fontSize="md">Confirm password</Text>
+          <Label label="Confirm password" />
           <InputGroup size="md" mb={4}>
             <Input
               id="c_password"
-              variant="flushed"
               type={showPassword ? "text" : "password"}
-              borderColor="#696687"
-              borderBottomWidth={1.5}
-              focusBorderColor="#4d61fc"
               placeholder="**********"
               onChange={({ target }) => handleChange(target.id, target.value)}
             />
+
             <InputRightElement>
               <IconButton
                 onClick={handleTogglePasswordVisibility}
@@ -164,19 +151,10 @@ export default function () {
 
           <Button
             onClick={(e) => handleSubmit(e)}
-            bg="#4d61fc"
-            color="#fff"
             w="full"
-            size="lg"
-            fontSize="md"
             my="4"
-            _hover={{
-              bg: "#253eff",
-            }}
-            variant="solid"
-          >
-            Create Account
-          </Button>
+            text="Create Account"
+          />
         </form>
 
         <Text textAlign="center">

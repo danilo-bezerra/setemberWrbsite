@@ -2,11 +2,9 @@ import {
   Center,
   Container,
   Text,
-  Input,
   InputGroup,
   InputRightElement,
   IconButton,
-  Button,
   Heading,
   Checkbox,
 } from "@chakra-ui/react";
@@ -14,6 +12,9 @@ import { useEffect, useState } from "react";
 import { EmailIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import Link from "../../components/Link";
 import { useNavigate, useNavigation } from "react-router-dom";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
+import Label from "../../components/label";
 
 export default function () {
   const [showPassword, setShowPassword] = useState(false);
@@ -70,30 +71,22 @@ export default function () {
           Login to manage your account
         </Text>
         <form>
-          <Text fontSize="md">Email</Text>
+          <Label label="Email" />
           <InputGroup mb={4}>
             <Input
               id="email"
               type="email"
-              variant="flushed"
-              borderColor="#696687"
-              borderBottomWidth={1.5}
-              focusBorderColor="#4d61fc"
               placeholder="ex: email@example.com"
               onChange={({ target }) => handleChange(target.id, target.value)}
             />
             <InputRightElement pointerEvents="none" children={<EmailIcon />} />
           </InputGroup>
 
-          <Text fontSize="md">Password</Text>
+          <Label label="Password" />
           <InputGroup size="md" mb={4}>
             <Input
               id="password"
-              variant="flushed"
               type={showPassword ? "text" : "password"}
-              borderColor="#696687"
-              borderBottomWidth={1.5}
-              focusBorderColor="#4d61fc"
               placeholder="**********"
               onChange={({ target }) => handleChange(target.id, target.value)}
             />
@@ -119,21 +112,13 @@ export default function () {
           >
             Remember me
           </Checkbox>
+
           <Button
             onClick={(e) => handleSubmit(e)}
-            bg="#4d61fc"
-            color="#fff"
             w="full"
-            size="lg"
-            fontSize="md"
             my="4"
-            _hover={{
-              bg: "#253eff",
-            }}
-            variant="solid"
-          >
-            Login
-          </Button>
+            text="Login"
+          />
         </form>
 
         <Text textAlign="center" mb="2">
